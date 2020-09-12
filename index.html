@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pet Incremental!</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body onload="randomizeSimulation()">
+    <div class="base">
+      <div class="column">
+        <div> 
+          <a id=end href="https://forms.gle/3b5Ehk3nbHHRED5a6"></a>
+          <h2> GOAL: $1 million!</h2>   
+          <h3 id=moneyEarned class=maintext>Money earned: 0.00</h3> <h4 id=moneyPerSecond class=secondtext>Money per second: 0.00</h4>
+          <div>
+            <button id=moneyButton onclick="getMoney()" class="main"><div class="left"></div>Pet your pet!<div class="right"></div></button>
+          </div>
+        </div>
+      
+        <h4>Extra-strength Pets: 
+          <span id=extraStrengthPets>0 Earn: .25 Cost: 5</span>
+          <div id=extraStrengthPetsPerSecond>Current Earnings: 0</div>
+        </h4>
+          <div>
+            <span class=bonus id=extraStrengthPets25>25</span>
+            <span class=bonus id=extraStrengthPets50>50</span>
+            <span class=bonus id=extraStrengthPets75>75</span>
+            <span class=bonus id=extraStrengthPets100>100
+            </span>
+          </div>
+          <button class="buy" onclick="buyAuto(extraStrengthPets)"style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></div></button>
+          
+          <button id=extraStrengthPets10 class="buy" onclick="buyNum(extraStrengthPets, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+          
+          <button class="buy" id=extraStrengthPets100B onclick="buyNum(extraStrengthPets, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+          
+          <button id=extraStrengthPetsMax class="buy" onclick="buyNum(extraStrengthPets, -1)">Purchase max: 0</button>
+       
+        <div>
+          <h4>Autopetter: 
+          <span id=autopetter>0 Earn: .5 Cost: 25</span>
+          <div id=autopetterPerSecond>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=autopetter25>25</span>
+            <span class=bonus id=autopetter50>50</span>
+            <span class=bonus id=autopetter75>75</span>
+            <span class=bonus id=autopetter100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(autopetter)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=autopetter10 class="buy" onclick="buyNum(autopetter, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=autopetter100B class="buy" onclick="buyNum(autopetter, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=autopetterMax class="buy" onclick="buyNum(autopetter, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+
+
+        <div>
+          <h4>Feeder: <span id=feeder>0 Earn: 1 Cost: 50</span>
+          <div id=feederPerSecond>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=feeder25>25</span>
+            <span class=bonus id=feeder50>50</span>
+            <span class=bonus id=feeder75>75</span>
+            <span class=bonus id=feeder100>100
+            </span>
+          </div>
+
+          <div>
+            <button class="buy" onclick="buyAuto(feeder)"style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button class="buy" id=feeder10 onclick="buyNum(feeder, 10)"style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></button>
+          
+            <button class="buy" id=feeder100B onclick="buyNum(feeder, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+          
+            <button id=feederMax class="buy" onclick="buyNum(feeder, -1)">Purchase max: 0</button>
+
+          </div>
+        </div> 
+        <!-- 4 -->
+        <div class=mountain>
+          <h4 class=mountain>Field: 
+          <span id=field>0 Earn: 3 Cost: 200</span>
+          <div  class=mountain id=fieldPerSecond>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=field25>25</span>
+            <span class=bonus id=field50>50</span>
+            <span class=bonus id=field75>75</span>
+            <span class=bonus id=field100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(field)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=field10 class="buy" onclick="buyNum(field, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=field100B class="buy" onclick="buyNum(field, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=fieldMax class="buy" onclick="buyNum(field, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+        <!-- 5 -->
+        <div  class=mountain>
+          <h4>Treat Maker: 
+          <span id=treatmaker>0 Earn: 14 Cost: 1337</span>
+          <div id=treatmakerPerSecond class=mountain>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=treatmaker25>25</span>
+            <span class=bonus id=treatmaker50>50</span>
+            <span class=bonus id=treatmaker75>75</span>
+            <span class=bonus id=treatmaker100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(treatmaker)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=treatmaker10 class="buy" onclick="buyNum(treatmaker, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=treatmaker100B class="buy" onclick="buyNum(treatmaker, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=treatmakerMax class="buy" onclick="buyNum(treatmaker, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+        <!-- 6 -->
+        <div class=mountain>
+          <h4>Frisbee Machine: 
+          <span id=frisbeemachine>0 Earn: 50 Cost: 3500</span>
+          <div id=frisbeemachinePerSecond class=mountain>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=frisbeemachine25>25</span>
+            <span class=bonus id=frisbeemachine50>50</span>
+            <span class=bonus id=frisbeemachine75>75</span>
+            <span class=bonus id=frisbeemachine100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(frisbeemachine)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=frisbeemachine10 class="buy" onclick="buyNum(frisbeemachine, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=frisbeemachine100B class="buy" onclick="buyNum(frisbeemachine, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=frisbeemachineMax class="buy" onclick="buyNum(frisbeemachine, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+        <!-- 7 -->
+        <div class=space>
+          <h4>Segway: 
+          <span id=segway>0 Earn: 140 Cost: 7420</span>
+          <div id=segwayPerSecond class=space>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=segway25>25</span>
+            <span class=bonus id=segway50>50</span>
+            <span class=bonus id=segway75>75</span>
+            <span class=bonus id=segway100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(segway)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=segway10 class="buy" onclick="buyNum(segway, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=segway100B class="buy" onclick="buyNum(segway, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=segwayMax class="buy" onclick="buyNum(segway, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+        <!-- 8 -->
+        <div class=space>
+          <h4>Robot Companion: 
+          <span id=robotcompanion>0 Earn: 420 Cost: 30000</span>
+          <div id=robotcompanionPerSecond class=space>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=robotcompanion25>25</span>
+            <span class=bonus id=robotcompanion50>50</span>
+            <span class=bonus id=robotcompanion75>75</span>
+            <span class=bonus id=robotcompanion100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(robotcompanion)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=robotcompanion10 class="buy" onclick="buyNum(robotcompanion, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=robotcompanion100B class="buy" onclick="buyNum(robotcompanion, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=robotcompanionMax class="buy" onclick="buyNum(robotcompanion, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+        <!-- 9 -->
+        <div class=space>
+          <h4>Spaceship: 
+          <span id=spaceship>0 Earn: 1111 Cost: 69420</span>
+          <div id=spaceshipPerSecond class=space>Current Earnings: 0</div>
+          </h4>
+
+          <div>
+            <span class=bonus id=spaceship25>25</span>
+            <span class=bonus id=spaceship50>50</span>
+            <span class=bonus id=spaceship75>75</span>
+            <span class=bonus id=spaceship100>100
+            </span>
+          </div>
+
+          <div>
+            <button onclick="buyAuto(spaceship)" class="buy" style="--content: 'Purchase 1';"><div class="left"></div>Purchase 1<div class="right"></button>
+
+            <button id=spaceship10 class="buy" onclick="buyNum(spaceship, 10)" style="--content: 'Purchase 10';"><div class="left"></div>Purchase 10<div class="right"></div></button>
+            
+            <button id=spaceship100B class="buy" onclick="buyNum(spaceship, 100)"style="--content: 'Purchase 100';"><div class="left"></div>Purchase 100<div class="right"></button> 
+            
+            <button id=spaceshipMax class="buy" onclick="buyNum(spaceship, -1)">Purchase max: 0</button>
+          </div>
+        </div> 
+
+
+
+
+
+
+      </div>
+      <div class="column" id="upgrades">
+
+        <div id="gif-holder">
+          <img id="pet" src="RoundNoDet/bear.png">
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class=shop>
+          <h3 id="shop">Shop</h3>
+          <h4 id="orbs">Orbs: 0</h4>
+          <button class="redgang" id="buyOrbs" onclick="buyOrbs()">Buy 100 Orbs Cost: 0</button>
+
+          <button class="purplegang"  id="lootbox" onclick="roll()">Purchase Pet:<br /> 225 Orbs</button>
+
+
+          <h4 class="shopText" id="common">Common Pets</h4>
+            <input class="petShop" type="image" id="bear" onclick="replacePet(bear)" src="Square/bear.png"/ style="filter: sepia(100%);">
+            <input class="petShop" type="image" id="chicken" onclick="replacePet(chicken)" src="Square/chicken.png"/>
+            <input class="petShop" type="image" id="pig" onclick="replacePet(pig)" src="Square/pig.png"/>
+            <input class="petShop" type="image" id="duck" onclick="replacePet(duck)" src="Square/duck.png"/>
+            <input class="petShop" type="image" id="chick" onclick="replacePet(chick)" src="Square/chick.png"/>
+            <input class="petShop" type="image" id="cow" onclick="replacePet(cow)" src="Square/cow.png"/>
+            <input class="petShop" type="image" id="goat" onclick="replacePet(goat)" src="Square/goat.png"/>
+            <input class="petShop" type="image" id="dog" onclick="replacePet(dog)" src="Square/dog.png"/>
+            <input class="petShop" type="image" id="horse" onclick="replacePet(horse)" src="Square/horse.png"/>
+            <input class="petShop" type="image" id="rabbit" onclick="replacePet(rabbit)" src="Square/rabbit.png"/>
+            <input class="petShop" type="image" id="moose" onclick="replacePet(moose)" src="Square/moose.png"/>
+            <input class="petShop" type="image" id="frog" onclick="replacePet(frog)" src="Square/frog.png"/>
+          <h4 class="shopText" id="epic">Epic Pets</h4>
+            <input class="petShop" type="image" id="crocodile" onclick="replacePet(crocodile)" src="Square/crocodile.png"/>
+            <input class="petShop" type="image" id="giraffe" onclick="replacePet(giraffe)" src="Square/giraffe.png"/>
+            <input class="petShop" type="image" id="gorilla" onclick="replacePet(gorilla)" src="Square/gorilla.png"/>
+            <input class="petShop" type="image" id="hippo" onclick="replacePet(hippo)" src="Square/hippo.png"/>
+            <input class="petShop" type="image" id="owl" onclick="replacePet(owl)" src="Square/owl.png"/>
+            <input class="petShop" type="image" id="elephant" onclick="replacePet(elephant)" src="Square/elephant.png"/>
+          <h4 class="shopText" id="legendary">Legendary Pets</h4>
+            <input class="petShop" type="image" id="narwhal" onclick="replacePet(narwhal)" src="Square/narwhal.png"/>
+            <input class="petShop" type="image" id="panda" onclick="replacePet(panda)" src="Square/panda.png"/>
+            <input class="petShop" type="image" id="penguin" onclick="replacePet(penguin)" src="Square/penguin.png"/>
+          <h4 class="shopText" id="ultimate">Ultimate Pets</h4>
+            <input class="petShop" type="image" id="parrot" onclick="replacePet(parrot)" src="Square/parrot.png"/>
+        </div>
+
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="script.js" charset="utf-8" type="text/javascript">
+ </script>
+  </body>
+</html>
